@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Página informativa de ejemplo sobre la Escuela Profesional de Ingeniería de Minas de la UNSCH.">
+<title>Ingeniería de Minas | UNSCH</title>
+<style>
+:root{
+  --guindo:#650d2b; --guindo-dark:#350616; --guindo-mid:#85143d;
+  --gold:#f2c66d; --cream:#fff8ef; --ink:#25151b; --muted:#715d64;
+  --glass:rgba(255,255,255,.09); --line:rgba(255,255,255,.18);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--cream);background:var(--guindo-dark);line-height:1.6}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(53,6,22,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1160px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}
+.logo{width:44px;height:44px;display:grid;place-items:center;border:2px solid var(--gold);border-radius:14px;color:var(--gold);font-weight:900;font-size:20px}
+.navlinks{display:flex;gap:22px;align-items:center;font-size:.94rem;color:#f7e8ed}
+.navlinks a:hover{color:var(--gold)}
+.menu-btn{display:none;background:transparent;border:1px solid var(--line);border-radius:10px;color:white;padding:7px 11px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 82% 30%,rgba(242,198,109,.19),transparent 28%),linear-gradient(130deg,#741037 0%,#4b0921 55%,#300512 100%);min-height:570px;display:flex;align-items:center}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid rgba(242,198,109,.17);border-radius:50%;width:480px;height:480px;right:-100px;top:40px}
+.hero:after{width:350px;height:350px;right:-35px;top:105px}
+.hero-inner{position:relative;z-index:1;max-width:1160px;width:100%;margin:auto;padding:78px 22px;display:grid;grid-template-columns:1.15fr .85fr;gap:45px;align-items:center}
+.eyebrow{display:inline-flex;gap:9px;align-items:center;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:800}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px var(--gold)}
+h1{font-size:clamp(2.6rem,5vw,4.8rem);line-height:1.02;margin:18px 0 20px;letter-spacing:-2px}
+h1 span{color:var(--gold)}
+.hero p{max-width:600px;color:#f0dce3;font-size:1.1rem}
+.actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:12px 20px;font-weight:750;border:1px solid transparent;transition:.2s;cursor:pointer}
+.btn-primary{background:var(--gold);color:#35101d}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 25px #16030b55}
+.btn-outline{border-color:#e9c8d4;color:white;background:transparent}
+.btn-outline:hover{background:#ffffff14}
+.hero-art{min-height:350px;display:grid;place-items:center;position:relative}
+.ore-card{width:min(100%,390px);aspect-ratio:4/4.2;border-radius:28px;border:1px solid #ffffff2b;background:linear-gradient(145deg,#ffffff1a,#ffffff06);backdrop-filter:blur(10px);padding:22px;box-shadow:0 25px 70px #1b030b66;transform:rotate(2deg)}
+.mine-scene{height:100%;border-radius:19px;overflow:hidden;background:linear-gradient(#a94d5d 0%,#e0a66c 45%,#4b2330 46%,#25131d 100%);position:relative}
+.sun{position:absolute;width:74px;height:74px;border-radius:50%;background:#f4d18a;top:40px;right:42px;box-shadow:0 0 45px #f4d18a77}
+.mountain{position:absolute;bottom:0;width:0;height:0;border-left:170px solid transparent;border-right:170px solid transparent;border-bottom:210px solid #4b2636;left:-45px}
+.mountain.two{border-left-width:150px;border-right-width:150px;border-bottom:160px solid #6e3445;left:120px}
+.mountain.three{border-left-width:110px;border-right-width:110px;border-bottom:120px solid #291723;left:60px}
+.road{position:absolute;bottom:-5px;left:42%;width:80px;height:180px;background:#d2a06c;clip-path:polygon(42% 0,58% 0,100% 100%,0 100%)}
+.scene-label{position:absolute;left:18px;right:18px;bottom:17px;padding:13px 15px;border:1px solid #ffffff35;background:#260d1bbf;backdrop-filter:blur(6px);border-radius:13px}
+.scene-label strong{display:block;color:var(--gold);font-size:.8rem;letter-spacing:1px;text-transform:uppercase}
+.scene-label span{font-size:1.05rem;font-weight:750}
+.float-tag{position:absolute;bottom:24px;left:-10px;background:var(--cream);color:var(--guindo);border-radius:14px;padding:12px 16px;font-weight:800;box-shadow:0 12px 30px #1b030b55}
+.stats{max-width:1160px;margin:-35px auto 0;position:relative;z-index:2;padding:0 22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{background:#fffaf5;color:var(--ink);padding:22px;border-radius:18px;box-shadow:0 15px 35px #20040d40}
+.stat strong{display:block;color:var(--guindo);font-size:1.08rem}
+.stat span{font-size:.9rem;color:var(--muted)}
+section{padding:82px 22px}
+.section-inner{max-width:1160px;margin:auto}
+.section-kicker{color:var(--gold);text-transform:uppercase;font-size:.76rem;font-weight:850;letter-spacing:2px}
+h2{font-size:clamp(2rem,3.5vw,3rem);line-height:1.12;letter-spacing:-1px;margin:9px 0 15px}
+.lead{max-width:720px;color:#e8cfd8;font-size:1.05rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.about-panel{padding:28px;border-radius:22px;background:linear-gradient(145deg,#81143c,#4b0921);border:1px solid var(--line)}
+.about-panel h3{margin-top:0;color:var(--gold)}
+.check-list{list-style:none;padding:0;margin:18px 0 0}
+.check-list li{padding:10px 0;border-bottom:1px solid #ffffff19}
+.check-list li:before{content:"✦";color:var(--gold);margin-right:11px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+.card{padding:25px;border:1px solid var(--line);border-radius:20px;background:var(--glass);transition:.22s}
+.card:hover{transform:translateY(-6px);background:#ffffff12;border-color:#e7b85c88}
+.card-icon{font-size:1.8rem;width:54px;height:54px;border-radius:16px;background:#f2c66d1a;display:grid;place-items:center;margin-bottom:18px}
+.card h3{margin:0 0 8px;color:#fff4e8}
+.card p{margin:0;color:#e4cbd4;font-size:.95rem}
+.pale{background:var(--cream);color:var(--ink)}
+.pale .section-kicker{color:var(--guindo-mid)}
+.pale .lead{color:#66545b}
+.pale .card{background:white;border:1px solid #eadce0;box-shadow:0 8px 25px #400b1b0b}
+.pale .card p{color:#705f65}
+.pale .card h3{color:var(--guindo)}
+.pale .card-icon{background:#f8e7ed}
+.pathway{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px}
+.step{border-top:3px solid var(--gold);padding:18px 15px;background:#ffffff0c;border-radius:0 0 15px 15px}
+.step b{display:block;color:var(--gold);font-size:1.6rem;margin-bottom:7px}
+.step span{font-weight:750}
+.step p{color:#e4cbd4;font-size:.9rem;margin-bottom:0}
+.faq{max-width:850px;margin-top:28px}
+details{border-bottom:1px solid #ffffff25;padding:17px 0}
+summary{cursor:pointer;font-weight:750;color:#fff4e8}
+details p{color:#e4cbd4;margin-bottom:0}
+.cta{padding:35px;border-radius:24px;background:linear-gradient(120deg,#8b1641,#4b0921);border:1px solid var(--line);display:flex;justify-content:space-between;gap:25px;align-items:center}
+.cta p{margin-bottom:0;color:#f0dce3}
+footer{background:#26040f;padding:32px 22px;color:#d7b9c4}
+.footer-inner{max-width:1160px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.small{font-size:.82rem;color:#cbaab7}
+#backTop{position:fixed;bottom:20px;right:20px;border:0;border-radius:50%;width:46px;height:46px;background:var(--gold);color:#35101d;font-size:20px;box-shadow:0 8px 24px #0004;cursor:pointer;display:none}
+@media(max-width:800px){
+ .hero-inner{grid-template-columns:1fr;padding-top:60px;gap:10px}.hero-art{min-height:300px}.ore-card{max-width:330px}
+ .navlinks{display:none;position:absolute;top:72px;left:12px;right:12px;padding:18px;background:#350616;border:1px solid var(--line);border-radius:15px;flex-direction:column;align-items:stretch}
+ .navlinks.open{display:flex}.menu-btn{display:block}
+ .stats{grid-template-columns:1fr;margin-top:-15px}.about-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.pathway{grid-template-columns:1fr 1fr}
+ .cta{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:520px){.cards,.pathway{grid-template-columns:1fr}h1{letter-spacing:-1px}.hero{min-height:auto}.hero-inner{padding-top:50px;padding-bottom:48px}section{padding:62px 18px}.stats{padding:0 18px}.float-tag{left:0}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="Navegación principal">
+    <a class="brand" href="#inicio"><span class="logo">IM</span><span>INGENIERÍA DE MINAS<br><small style="font-weight:500;color:#e5bdca">UNSCH · Ayacucho</small></span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">☰ Menú</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#inicio">Inicio</a><a href="#escuela">La escuela</a><a href="#campo">Campo profesional</a><a href="#formacion">Formación</a><a href="#preguntas">Preguntas</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Ciencia · Tecnología · Responsabilidad</div>
+      <h1>El futuro se construye <span>bajo tierra.</span></h1>
+      <p>Conoce la Ingeniería de Minas de la Universidad Nacional de San Cristóbal de Huamanga: una carrera que integra ciencia, tecnología, seguridad y compromiso con el desarrollo sostenible.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#escuela">Explorar la carrera <span>↗</span></a>
+        <a class="btn btn-outline" href="#campo">¿Dónde puedo trabajar?</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Ilustración decorativa de un paisaje minero">
+      <div class="ore-card"><div class="mine-scene"><div class="sun"></div><div class="mountain"></div><div class="mountain two"></div><div class="mountain three"></div><div class="road"></div><div class="scene-label"><strong>Ingeniería de Minas</strong><span>Innovar con responsabilidad</span></div></div></div>
+      <div class="float-tag">⛏️ Recursos · Seguridad · Ambiente</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats" aria-label="Temas principales de la carrera">
+  <div class="stat"><strong>⛏️ Operaciones mineras</strong><span>Planificación y extracción responsable</span></div>
+  <div class="stat"><strong>🦺 Seguridad</strong><span>Prevención de riesgos y cuidado de las personas</span></div>
+  <div class="stat"><strong>🌱 Sostenibilidad</strong><span>Gestión ambiental y cierre de minas</span></div>
+</div>
+
+<section id="escuela">
+  <div class="section-inner about-grid">
+    <div>
+      <div class="section-kicker">Conoce tu carrera</div>
+      <h2>Ingeniería que transforma recursos en oportunidades.</h2>
+      <p class="lead">La Ingeniería de Minas estudia cómo planificar, desarrollar y supervisar operaciones mineras, buscando productividad, seguridad para los trabajadores y protección del entorno.</p>
+      <p>En la UNSCH, la formación universitaria se conecta con la realidad de Ayacucho y del Perú, un país donde la actividad minera tiene importancia económica, social y tecnológica.</p>
+      <a class="btn btn-primary" href="#formacion">Ver áreas de formación →</a>
+    </div>
+    <div class="about-panel">
+      <h3>¿Qué aporta un ingeniero de minas?</h3>
+      <ul class="check-list">
+        <li>Analiza y planifica operaciones de explotación.</li>
+        <li>Evalúa condiciones geológicas y métodos de extracción junto con equipos multidisciplinarios.</li>
+        <li>Promueve la seguridad, la salud ocupacional y la prevención de accidentes.</li>
+        <li>Considera los impactos ambientales y el uso responsable de los recursos.</li>
+        <li>Aplica matemáticas, física, química, tecnología y gestión.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pale" id="campo">
+  <div class="section-inner">
+    <div class="section-kicker">Tu futuro profesional</div>
+    <h2>¿En qué áreas puedes desarrollarte?</h2>
+    <p class="lead">La carrera ofrece distintas rutas profesionales. La especialización y las oportunidades concretas dependen de la experiencia, la formación y los requisitos de cada puesto.</p>
+    <div class="cards">
+      <article class="card"><div class="card-icon">🪨</div><h3>Operaciones y producción</h3><p>Apoyo en la planificación de labores, control de procesos y seguimiento de la producción minera.</p></article>
+      <article class="card"><div class="card-icon">📐</div><h3>Planeamiento minero</h3><p>Diseño de planes de trabajo, evaluación de alternativas y uso de herramientas técnicas.</p></article>
+      <article class="card"><div class="card-icon">🦺</div><h3>Seguridad minera</h3><p>Identificación de peligros, evaluación de riesgos y promoción de una cultura preventiva.</p></article>
+      <article class="card"><div class="card-icon">🌿</div><h3>Gestión ambiental</h3><p>Prevención y seguimiento de impactos, manejo de residuos y recuperación de áreas intervenidas.</p></article>
+      <article class="card"><div class="card-icon">🧪</div><h3>Investigación e innovación</h3><p>Participación en estudios, pruebas técnicas y mejora de procesos vinculados a la minería.</p></article>
+      <article class="card"><div class="card-icon">🧭</div><h3>Supervisión y gestión</h3><p>Coordinación de equipos, control de actividades y toma de decisiones basadas en datos.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="formacion">
+  <div class="section-inner">
+    <div class="section-kicker">Construye tus bases</div>
+    <h2>De las ciencias básicas a la práctica minera.</h2>
+    <p class="lead">La formación de un ingeniero combina conocimientos científicos, herramientas técnicas y habilidades humanas. Este esquema es orientativo, no reemplaza el plan curricular oficial vigente.</p>
+    <div class="pathway">
+      <div class="step"><b>01</b><span>Ciencias básicas</span><p>Matemática, física, química y ciencias naturales.</p></div>
+      <div class="step"><b>02</b><span>Fundamentos de ingeniería</span><p>Materiales, geología, dibujo técnico y herramientas digitales.</p></div>
+      <div class="step"><b>03</b><span>Especialidad minera</span><p>Operaciones, planeamiento, equipos y procesos mineros.</p></div>
+      <div class="step"><b>04</b><span>Responsabilidad profesional</span><p>Seguridad, ambiente, ética y trabajo colaborativo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:linear-gradient(135deg,#4b0921,#310512)" id="preguntas">
+  <div class="section-inner">
+    <div class="section-kicker">Resolvamos tus dudas</div>
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Qué hace un ingeniero de minas?</summary><p>Planifica, evalúa y supervisa actividades relacionadas con la explotación de recursos minerales, considerando aspectos técnicos, económicos, de seguridad y ambientales.</p></details>
+      <details><summary>¿Por qué son importantes las matemáticas y la química?</summary><p>Las matemáticas ayudan a modelar y calcular; la química permite comprender las propiedades de los materiales, minerales y procesos de tratamiento.</p></details>
+      <details><summary>¿La minería también requiere cuidar el ambiente?</summary><p>Sí. La gestión ambiental, el cumplimiento de las normas, la prevención de impactos y la rehabilitación de áreas son componentes importantes de una actividad minera responsable.</p></details>
+      <details><summary>¿Dónde consulto información oficial de la UNSCH?</summary><p>Revisa los canales oficiales de la Universidad Nacional de San Cristóbal de Huamanga para confirmar el plan de estudios, requisitos de admisión, autoridades y datos institucionales vigentes.</p></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="cta">
+      <div><div class="section-kicker">Orgullo UNSCH</div><h2 style="margin-bottom:8px">Aprender hoy. Transformar mañana.</h2><p>La ingeniería también se demuestra con ética, seguridad, innovación y respeto por las comunidades.</p></div>
+      <a class="btn btn-primary" href="https://www.unsch.edu.pe/" target="_blank" rel="noopener noreferrer">Visitar web oficial ↗</a>
+    </div>
+    <p class="small" style="margin-top:18px">Nota: esta página es un diseño informativo de demostración. Verifica en fuentes oficiales los datos institucionales y el plan curricular antes de publicar.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><strong>Ingeniería de Minas · UNSCH</strong><br><span class="small">Universidad Nacional de San Cristóbal de Huamanga · Ayacucho, Perú</span></div>
+    <div class="small">Diseño académico en tonos guindos · <span id="year"></span></div>
+  </div>
+</footer>
+<button id="backTop" aria-label="Volver arriba" title="Volver arriba">↑</button>
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const navlinks = document.getElementById('navlinks');
+menuBtn.addEventListener('click', () => {
+  const opened = navlinks.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(opened));
+});
+navlinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  navlinks.classList.remove('open');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}));
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => { backTop.style.display = window.scrollY > 400 ? 'block' : 'none'; });
+backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
